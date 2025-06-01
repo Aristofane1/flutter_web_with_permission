@@ -1,16 +1,11 @@
 {
-    "name": "jhjhv",
-    "short_name": "jhjhv",
+    "name": "FeelZen",
+    "short_name": "FeelZen",
     "start_url": ".",
     "display": "standalone",
-    "permissions": [
-        "microphone",
-        "camera",
-        "geolocation"
-    ],
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#6ab14c",
+    "theme_color": "#6ab14c",
+    "description": "Feelzen, sentez-vous mieux",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

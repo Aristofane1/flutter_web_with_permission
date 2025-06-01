@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -18,31 +19,76 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="description" content="Feelzen, sentez-vous mieux">
 
   <!-- iOS meta tags & icons -->
+  <!-- <meta name="apple-mobile-web-app-capable" content="yes"> -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="jhjhv">
+  <meta name="apple-mobile-web-app-title" content="feelzen">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
-  <!-- Permissions Policy pour autoriser la caméra et le microphone -->
-  <meta http-equiv="Permissions-Policy" content="camera=*, microphone=*, display-capture=*, geolocation=*">
-  
-  <!-- Feature Policy (pour les navigateurs plus anciens) -->
-  <meta http-equiv="Feature-Policy" content="camera '*'; microphone '*'; display-capture '*'; geolocation '*'">
-  
-  <!-- Content Security Policy pour permettre l'accès aux médias -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https: wss: ws:;"">
-
-
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png" />
 
-  <title>jhjhv</title>
+  <title>Feelzen</title>
   <link rel="manifest" href="manifest.json">
 </head>
+
 <body>
   <script src="flutter_bootstrap.js" async></script>
+  <script>
+
+    // PWA PART
+    let deferredPrompt;
+
+    window.addEventListener("beforeinstallprompt", (e) => {
+      deferredPrompt = e;
+    });
+
+    function promptInstall() {
+      deferredPrompt.prompt();
+    }
+
+    // Listen for app install event
+    window.addEventListener("appinstalled", () => {
+      deferredPrompt = null;
+      appInstalled();
+    });
+
+    // Track how PWA was launched (either from browser or as PWA)
+    function getLaunchMode() {
+      const isStandalone = window.matchMedia(
+        "(display-mode: standalone)"
+      ).matches;
+      if (deferredPrompt) hasPrompt();
+      if (document.referrer.startsWith("android-app://")) {
+        appLaunchedAsTWA();
+      } else if (navigator.standalone || isStandalone) {
+        appLaunchedAsPWA();
+      } else {
+        window.appLaunchedInBrowser();
+      }
+    }
+
+    //
+
+    if ('serviceWorker' in navigator) {
+      // Service workers are supported. Use them.
+      window.addEventListener('load', function () {
+        // ADD THIS LINE
+        navigator.serviceWorker.register('/firebase-messaging-sw.js');
+
+        // Wait for registration to finish before dropping the <script> tag.
+        // Otherwise, the browser will load the script multiple times,
+        // potentially different versions.
+        const serviceWorkerVersion = `"3138668312"`;
+        var serviceWorkerUrl = 'flutter_service_worker.js?v=' + serviceWorkerVersion;
+
+        //  ...
+      });
+    }
+  </script>
 </body>
+
 </html>
