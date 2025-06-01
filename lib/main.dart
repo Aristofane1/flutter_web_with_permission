@@ -136,7 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
 
           onPermissionRequest: (controller, request) async {
-            print("Permission demandée: ${request.resources}");
+            print("Permission demandée: ${request.resources}"); 
 
             // Toujours accorder les permissions pour caméra et micro
             if (request.resources.contains(PermissionResourceType.CAMERA) ||
