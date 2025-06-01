@@ -26,6 +26,16 @@
   <meta name="apple-mobile-web-app-title" content="jhjhv">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
+  <!-- Permissions Policy pour autoriser la caméra et le microphone -->
+  <meta http-equiv="Permissions-Policy" content="camera=*, microphone=*, display-capture=*, geolocation=*">
+  
+  <!-- Feature Policy (pour les navigateurs plus anciens) -->
+  <meta http-equiv="Feature-Policy" content="camera '*'; microphone '*'; display-capture '*'; geolocation '*'">
+  
+  <!-- Content Security Policy pour permettre l'accès aux médias -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https: wss: ws:;"">
+
+
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
