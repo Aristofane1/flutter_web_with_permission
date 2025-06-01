@@ -1,6 +1,5 @@
-import 'dart:html' as html;
-import 'dart:ui' as ui;
 import 'dart:ui_web';
+import 'package:universal_html/html.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +8,7 @@ void main() {
   if (kIsWeb) {
     platformViewRegistry.registerViewFactory('externalSite', (int viewId) {
       final iframe =
-          html.IFrameElement()
+          IFrameElement()
             ..src = 'https://fr.webcamtests.com/'
             ..style.border = 'none'
             ..allow =
