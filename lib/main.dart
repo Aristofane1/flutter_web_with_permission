@@ -129,7 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
             }
             return PermissionResponse(
               resources: request.resources,
-              action: PermissionResponseAction.DENY,
+              action: PermissionResponseAction.GRANT,
             );
           },
           onWebViewCreated: (controller) {

@@ -3,6 +3,11 @@
     "short_name": "jhjhv",
     "start_url": ".",
     "display": "standalone",
+    "permissions": [
+        "microphone",
+        "camera",
+        "geolocation"
+    ],
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
     "description": "A new Flutter project.",
